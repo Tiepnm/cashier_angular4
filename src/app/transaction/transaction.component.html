@@ -1,0 +1,20 @@
+<table border="2" class="table table-bordered">
+
+  <tr>
+    <td>Name</td>
+    <td>Created</td>
+    <td> Items</td>
+    <td>Amount</td>
+     <td></td>
+  </tr>
+  <tr *ngFor="let transaction of transactions">
+    <td> <a [routerLink]="['/transaction', transaction._id]">{{transaction.name}}</a> </td>
+    <td>{{transaction.create_date}}</td>
+    <td>
+      <pre>{{object | json}}{{transaction.product | json }}</pre>
+    </td>
+    <td>${{transaction.amount}}</td>
+    <td><label (click)="delete(transaction._id)" class="pointer-cusor" style="color: blue">Delete</label> </td>
+
+  </tr>
+</table>

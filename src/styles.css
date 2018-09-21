@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+header {
+  background-color: #5986CF;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+table th{
+  background: #D6EEFF;
+
+}
+
+nav {
+  float: left;
+  width: 20%;
+  height: 300px; /* only for demonstration, should be removed */
+
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+.pointer-cusor{
+  cursor:pointer;
+}
+.item_quantity{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}

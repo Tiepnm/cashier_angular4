@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col">
+
+    <table border="2" class="table table-bordered">
+      <thead>
+      <tr>
+        <th colspan="2" style="background-color: #5986CF; color: white; text-align: right"> Total Amount:
+          {{totalAmountDisplay}}
+        </th>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <th style="width: 83.13%; color: #5986CF">ITEM</th>
+        <th style="width: 16.17%;color: #5986CF">TOTAL</th>
+      </tr>
+      </thead>
+      <tr *ngFor="let item of itemSelected">
+        <td>{{item.name}}
+          <div class="item_quantity">x{{item.quantity}}</div>
+          <img src="assets/img/cancel-icon.png" width="25px" class="pointer-cusor" style="float: right"
+               (click)="removeItem(item)"/></td>
+        <td>${{item.price}}</td>
+      </tr>
+      <tr *ngIf="isProductScreen && itemSelected.length == 0"><td colspan="2" style="text-align: center" ><i>Items will caculate when you select item in right panel...</i></td></tr>
+      <tr *ngIf="itemSelected.length > 0 && isProductScreen">
+        <td colspan="2"><img src="assets/img/Save-icon.png" width="25px" class="pointer-cusor" (click)="save()"/>
+          <img src="assets/img/reset-icon.png" width="25px" class="pointer-cusor" style="margin-left: 15px;" (click)="reset()"/></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col" style="text-align: center">
+    <label style="color: #5986CF; font-weight: bold" *ngIf="isProductScreen">ITEM LIST</label>
+    <div class="row" *ngFor="let key of getKeys(map)">
+      <div class="col" *ngFor="let value of getValues(key)" (click)="open(content, value)">
+        <div class="pointer-cusor"><img src="assets/img/food.png" width="74px"></div>
+        <div>{{value.name}}-{{value.price}}$</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <table class="table">
+      <tr>
+        <td>
+          Name
+        </td>
+        <td>
+          {{itemName}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Quantity
+        </td>
+        <td>
+          <input [(ngModel)]="itemQuantity"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="button" value="Save" (click)="close()"></td>
+      </tr>
+    </table>
+
+
+  </div>
+</ng-template>
